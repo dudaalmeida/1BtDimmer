@@ -82,7 +82,7 @@ void trn(){
             i = 0;
         }
         light = i;
-        printf("Intensidade: %f\n", i);
+        printf("Intensidade: %.2f\n", i);
         printf("--------------------------------------------------\n");
         t.attach(&trn, 1);
         b.attach(&blink, 0.2);
