@@ -3,7 +3,7 @@
 DigitalOut orange (p5);
 DigitalOut blue (p6);
 InterruptIn btn (p7);
-PwmOut led (p9);
+PwmOut light (p9);
 Timeout t,b;
 int c=0;
 
@@ -23,6 +23,7 @@ int main() {
     orange = 0;
     btn.rise(&rise);
     btn.fall(&fall);
+    light = i;
 }
 
 void rise(){
@@ -80,7 +81,7 @@ void trn(){
             printf("STATE: MIN\n");
             i = 0;
         }
-        led = i;
+        light = i;
         printf("Intensidade: %f\n", i);
         printf("--------------------------------------------------\n");
         t.attach(&trn, 1);
@@ -90,11 +91,10 @@ void trn(){
 
 void blink(){
     
-    T = 0.2;
+    T = 0.2;                         // Pisca com frequência de 5 Hz
     
     if(state == RISE) blue = !blue;
     if(state == FALL) orange = !orange;
     
     t.attach(&blink,T);
-    
 }
